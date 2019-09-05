@@ -1,6 +1,71 @@
-//
-GET http://localhost:6000/ HTTP/1.1
+// CREATE USER
+POST http://localhost:6000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": ""
+}
 
 ###
 
-//
+// CREATE POST
+POST http://localhost:6000/api/users/10/posts HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": ""
+}
+
+###
+
+// READ ALL USERS
+GET http://localhost:6000/api/users HTTP/1.1
+
+###
+
+// READ USER BY ID
+GET http://localhost:6000/api/users/10 HTTP/1.1
+
+###
+
+// READ USER'S POSTS BY ID
+GET http://localhost:6000/api/users/10/posts HTTP/1.1
+
+###
+
+// UPDATE USER BY ID
+PUT http://localhost:6000/api/users/10 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "UpdatedUserName"
+}
+
+###
+
+// DELETE USER BY ID
+DELETE http://localhost:6000/api/users/10 HTTP/1.1
+
+###
+###
+###
+
+// READ ALL POSTS
+GET http://localhost:6000/api/posts
+
+###
+
+// READ POSTS BY ID
+GET http://localhost:6000/api/posts
+
+###
+
+// UPDATE POST BY ID
+PUT http://localhost:6000/api/posts
+
+###
+
+// DELETE POST BY ID
+DELETE http://localhost:6000/api/posts
+
+###
