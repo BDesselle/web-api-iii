@@ -1,11 +1,20 @@
 const express = require("express");
+const server = express();
 const postRouter = require("./posts/postRouter");
 const userRouter = require("./users/userRouter");
-const server = express();
 
-server.use(express.json(), logger);
+server.use(express.json());
 
-/* server.use(logger); */
+//* custom LOGGER middleware
+function logger(req, res, next) {
+  console.log(
+    `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.ip}`
+  );
+  next();
+}
+
+// Logger Middleware
+server.use(logger);
 
 // Post Router
 server.use("/api/posts", postRouter);
@@ -13,14 +22,14 @@ server.use("/api/posts", postRouter);
 // User Router
 server.use("/api/users", userRouter);
 
-//* custom LOGGER middleware
-function logger(req, res, next) {
-  console.log(
-    `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.get(
-      "Origin"
-    )}`
-  );
-  next();
-}
+// Welcome
+server.get("/", (req, res) => {
+  res.send("Let's write some middleware!");
+});
+
+// 404 Fallback
+server.use(function(req, res) {
+  res.status(404).send("😿 RIP this endpoint 😿");
+});
 
 module.exports = server;
