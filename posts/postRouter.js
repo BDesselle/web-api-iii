@@ -1,27 +1,17 @@
-const express = 'express';
-
+const express = require("express");
 const router = express.Router();
+const posts = require("./postDb");
 
-router.get('/', (req, res) => {
+//* READ ALL POSTS
+router.get("/", (req, res) => {});
+//* READ POSTS BY ID
+router.get("/:id", validatePostId, (req, res) => {});
+//* UPDATE POST BY ID
+router.put("/:id", validatePostId, (req, res) => {});
+//* DELETE POST BY ID
+router.delete("/:id", validatePostId, (req, res) => {});
 
-});
-
-router.get('/:id', (req, res) => {
-
-});
-
-router.delete('/:id', (req, res) => {
-
-});
-
-router.put('/:id', (req, res) => {
-
-});
-
-// custom middleware
-
-function validatePostId(req, res, next) {
-
-};
+//* custom VALIDATE middleware
+function validatePostId(req, res, next) {}
 
 module.exports = router;
