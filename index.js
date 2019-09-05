@@ -1,3 +1,3 @@
 const server = require("./server");
 
-server.listen(port, () => console.log(`API running...`));
+server.listen($PORT, () => console.log(`API running...`));
